@@ -4,7 +4,11 @@ export default async function handler(req, res) {
 
   // GET /api/bookmarkCategory
   if(req.method === 'GET'){
-    const results = await prisma.bookmarkCategory.findMany({});
+    const results = await prisma.bookmarkCategory.findMany({
+      include: {
+        bookmarks: true
+      }
+    });
     res.json(results);
   }
   // POST /api/bookmarkCategory

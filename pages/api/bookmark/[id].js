@@ -1,13 +1,13 @@
 import prisma from '../../../lib/prisma'
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const { id } = req.query;
 
   // DELETE /api/bookmark/:id :
   if(req.method === "DELETE"){
     const deleteBookmark = await prisma.bookmark.delete({
       where: {
-        id : id,
+        id : Number(id),
       },
     });
 
@@ -34,5 +34,4 @@ export default function handler(req, res) {
   else{
 
   }
-  res.end(`Bookmark: ${id}`)
 }
