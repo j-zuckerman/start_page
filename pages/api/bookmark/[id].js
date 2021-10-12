@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     const {link, name, icon, color} = req.body;
     const updateBookmark = await prisma.update({
       where: {
-        id: id
+        id: Number(id)
       },
       data:{
         link: link,

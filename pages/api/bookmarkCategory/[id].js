@@ -8,13 +8,13 @@ export default async function handler(req, res) {
     if(req.method === "DELETE"){
         const deleteBookmarks = prisma.bookmarks.deleteMany({
             where: {
-              categoryId: id,
+              categoryId: Number(id),
             },
           });
           
           const deleteCategory = prisma.bookmarkCategory.delete({
             where: {
-              id: id,
+              id: Number(id),
             },
           });
           
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
         const bookmarkCategoryToUpdate = await prisma.bookmarkCategory.update{
             where:{
-                id: id,
+                id: Number(id),
             },
             data:{
                 title: title, 
