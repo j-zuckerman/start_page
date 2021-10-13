@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BookmarkList from '../bookmarkList';
 import SideMenu from '../sideMenu';
+import styles from './layout.module.css';
 
 function Layout({ categories }) {
   const bookmarkMap = new Map();
@@ -23,7 +24,7 @@ function Layout({ categories }) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <SideMenu categoryTitles={categoryTitles} handleClick={handleClick} />
       <BookmarkList bookmarks={bookmarksToDisplay} />
     </div>
