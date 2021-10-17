@@ -1,12 +1,14 @@
 import Bookmark from '../bookmark';
+import AddBookmark from './addBookmark';
 import styles from './bookmarkList.module.css';
 
 function BookmarkList({ bookmarks }) {
   return (
     <section className={styles.container}>
-      {bookmarks.map((bookmark) => (
-        <Bookmark bookmark={bookmark} />
-      ))}
+      {bookmarks.length
+        ? bookmarks.map((bookmark) => <Bookmark bookmark={bookmark} />)
+        : null}
+      <AddBookmark />
     </section>
   );
 }

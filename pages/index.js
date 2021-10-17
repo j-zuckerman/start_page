@@ -1,7 +1,7 @@
-import Layout from '../components/layout';
+import App from '../components/app';
 
 function HomePage({ categories }) {
-  return <Layout categories={categories} />;
+  return <App categories={categories} />;
 }
 
 export async function getStaticProps() {

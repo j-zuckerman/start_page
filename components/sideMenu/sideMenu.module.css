@@ -1,0 +1,17 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  list-style-type: none;
+  border: 1px solid red;
+  height: 100vh;
+}
+
+.menu-item {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.active {
+  color: pink;
+}
