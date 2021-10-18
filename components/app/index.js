@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import BookmarkList from '../bookmarkList';
+import Header from '../header';
 import SideMenu from '../sideMenu';
-import styles from './layout.module.css';
+import styles from './app.module.css';
 
 function App({ categories }) {
   const bookmarkMap = new Map();
@@ -35,10 +36,13 @@ function App({ categories }) {
   const deleteBookmark = () => {};
 
   return (
-    <div className={styles.container}>
-      <SideMenu categories={categories} changeCategory={changeCategory} />
-      <BookmarkList bookmarks={bookmarksToDisplay} />
-    </div>
+    <>
+      <Header />
+      <div className={styles.container}>
+        <SideMenu categories={categories} changeCategory={changeCategory} />
+        <BookmarkList bookmarks={bookmarksToDisplay} />
+      </div>
+    </>
   );
 }
 
