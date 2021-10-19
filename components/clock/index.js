@@ -12,7 +12,7 @@ function Clock() {
 
   if (hours < 10) timeToDisplay = '0' + timeToDisplay;
 
-  return <>{timeToDisplay}</>;
+  return <p className={styles.clock}>{timeToDisplay}</p>;
 }
 
 export default Clock;

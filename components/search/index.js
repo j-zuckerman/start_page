@@ -14,17 +14,15 @@ function Search() {
   };
 
   return (
-    <div class="search-container" id="search">
-      <input
-        class="search-input"
-        type="text"
-        placeholder="Search Google"
-        name="search"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyPress={search}
-      />
-    </div>
+    <input
+      className={styles['search-input']}
+      type="text"
+      placeholder="Search Google"
+      name="search"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      onKeyPress={search}
+    />
   );
 }
 

@@ -7,3 +7,18 @@
   width: 100%;
   padding: 2rem;
 }
+
+.search-container {
+  border-radius: 5px;
+  width: 345px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.weather-container {
+  display: flex;
+  height: 60px;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+}

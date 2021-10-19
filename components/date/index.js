@@ -46,7 +46,7 @@ function DateDisplay() {
 
   let fullDateToDisplay = `${dayOfTheWeek}, ${month} ${dayOfTheMonth}`;
 
-  return <div>{fullDateToDisplay}</div>;
+  return <p className={styles.date}>{fullDateToDisplay}</p>;
 }
 
 export default DateDisplay;

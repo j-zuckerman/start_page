@@ -54,12 +54,12 @@ function Weather() {
   }, []);
   return (
     <>
-      <div className={styles['weather-icon-container']}>
-        <i className={icon}></i>
+      <div className={styles['icon-container']}>
+        <i className={`${styles.icon} ${icon}`}></i>
       </div>
       <div>
-        <p className={styles['weather-description']}>{description}</p>
-        <p className={styles.temperature}>{temp}</p>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.temperature}>{temp}°F</p>
       </div>
     </>
   );
