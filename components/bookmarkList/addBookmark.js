@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../modal';
 import styles from './bookmarkList.module.css';
 
-function AddBookmark() {
+function AddBookmark({ addBookmark }) {
   const [show, setShow] = useState(false);
   return (
     <>
@@ -12,7 +12,11 @@ function AddBookmark() {
       >
         <i class="ri-add-fill"></i>
       </a>
-      <Modal show={show} onClose={() => setShow(false)} />
+      <Modal
+        show={show}
+        onClose={() => setShow(false)}
+        addBookmark={addBookmark}
+      />
     </>
   );
 }

@@ -3,12 +3,7 @@ import styles from './sideMenu.module.css';
 import MenuItem from './menuItem';
 import AddCategory from './addCategory';
 
-function SideMenu({ categories, changeCategory }) {
-  const [active, setActive] = useState(categories[0].title);
-
-  const changeActiveCategory = (title) => {
-    setActive(title);
-  };
+function SideMenu({ categories, changeCategory, active }) {
   return (
     <ul className={styles.menu}>
       {categories.map((category) => {
@@ -18,7 +13,6 @@ function SideMenu({ categories, changeCategory }) {
             isActive={isActive}
             changeCategory={changeCategory}
             category={category}
-            changeActiveCategory={changeActiveCategory}
           />
         );
       })}
