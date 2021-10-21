@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import 'remixicon/fonts/remixicon.css';
 import styles from './bookmark.module.css';
+import DeleteButton from './delete';
 
-function Bookmark({ bookmark }) {
+function Bookmark({ bookmark, deleteBookmark, editBookmark }) {
   return (
     <a
       href={bookmark.link}
@@ -13,6 +14,8 @@ function Bookmark({ bookmark }) {
       <label>
         <span>{bookmark.name}</span>
       </label>
+
+      <DeleteButton deleteBookmark={deleteBookmark} id={bookmark.id} />
     </a>
   );
 }

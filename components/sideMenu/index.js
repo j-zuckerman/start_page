@@ -13,6 +13,7 @@ function SideMenu({ categories, changeCategory, active }) {
             isActive={isActive}
             changeCategory={changeCategory}
             category={category}
+            key={category.id}
           />
         );
       })}

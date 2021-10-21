@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import BookmarkList from '../bookmarkList';
 import Header from '../header';
 import SideMenu from '../sideMenu';
@@ -6,14 +6,9 @@ import { API_URL } from '../../config';
 import styles from './app.module.css';
 
 function App({ categories }) {
-  const bookmarkMap = new Map();
-  categories.forEach((category) => {
-    bookmarkMap.set(category.title, category.bookmarks);
-  });
-
   const [category, setCategory] = useState(categories[0].title);
   const [bookmarksToDisplay, setBookmarksToDisplay] = useState(
-    bookmarkMap.get(category)
+    categories[0].bookmarks
   );
   const [active, setActive] = useState(categories[0].title);
 
@@ -21,18 +16,17 @@ function App({ categories }) {
     setActive(category);
     setCategory(category);
 
-    const theBookmarksToDisplay = bookmarkMap.get(category);
-    console.log(theBookmarksToDisplay);
-    setBookmarksToDisplay(theBookmarksToDisplay);
+    const currCategory = categories.filter((item) => item.title === category);
+    setBookmarksToDisplay(currCategory[0].bookmarks);
   };
 
-  const addCategory = (title) => {
+  const addCategory = async (title) => {
     //call api endpoint with title as body
   };
 
-  const editCategory = (id, title) => {};
+  const editCategory = async (id, title) => {};
 
-  const deleteCategory = (id) => {};
+  const deleteCategory = async (id) => {};
 
   const addBookmark = async (name, link, icon, color) => {
     const response = await fetch(API_URL + '/bookmark', {
@@ -49,12 +43,27 @@ function App({ categories }) {
         categoryName: active,
       }),
     });
-    const data = await response.json();
+    const bookmarkToAdd = await response.json();
+    console.log(bookmarkToAdd);
 
-    console.log(data);
+    //Update UI to reflect changes
+    setBookmarksToDisplay((bookmarksToDisplay) => [
+      ...bookmarksToDisplay,
+      bookmarkToAdd,
+    ]);
   };
 
-  const deleteBookmark = (id) => {};
+  const deleteBookmark = async (id) => {
+    const response = await fetch(API_URL + '/bookmark/' + id, {
+      method: 'DELETE',
+    });
+
+    const bookmarkThatWasDeleted = await response.json();
+    console.log(bookmarkThatWasDeleted);
+
+    //Update UI to reflect changes
+    setBookmarksToDisplay(bookmarksToDisplay.filter((item) => item.id !== id));
+  };
 
   const editBookmark = (name, link, icon, color, id) => {};
 

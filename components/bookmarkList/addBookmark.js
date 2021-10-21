@@ -10,7 +10,7 @@ function AddBookmark({ addBookmark }) {
         className={`${styles.bookmark} ${styles.icon}`}
         onClick={() => setShow(true)}
       >
-        <i class="ri-add-fill"></i>
+        <i className="ri-add-fill"></i>
       </a>
       <Modal
         show={show}
