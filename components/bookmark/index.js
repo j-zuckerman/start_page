@@ -3,6 +3,14 @@ import styles from './bookmark.module.css';
 import DeleteButton from './delete';
 
 function Bookmark({ bookmark, deleteBookmark, editBookmark }) {
+  let containsData = true;
+
+  for (let key in bookmark) {
+    if (bookmark[key] === '') containsData = false;
+  }
+
+  if (!containsData) return false;
+
   return (
     <a
       href={bookmark.link}
