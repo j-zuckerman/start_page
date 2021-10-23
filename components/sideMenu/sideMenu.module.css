@@ -1,17 +1,74 @@
 .menu {
   display: flex;
   flex-direction: column;
-  width: 150px;
-  list-style-type: none;
-  border: 1px solid red;
+  align-items: center;
+  width: 230px;
+  background: var(--menu-color);
   height: 100vh;
+  padding: 0.5rem 2rem;
+}
+
+.search-container {
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+}
+
+.weather-container {
+  align-self: flex-end;
+  display: flex;
+  width: 100%;
+  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 2rem;
 }
 
 .menu-item {
-  margin-left: 0;
-  padding-left: 0;
+  text-transform: capitalize;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  margin-top: 0.75rem;
+  font-weight: bold;
+}
+
+.menu-item:hover {
+  background: var(--bg-color);
+  color: var(--accent-color);
 }
 
 .active {
-  color: pink;
+  background: var(--bg-color);
+  color: var(--accent-color);
+}
+
+.add-category {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.category-input {
+  margin: 1rem 0;
+  white-space: nowrap;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-left: 10px rgb(112, 10, 10) solid;
+  border-color: var(--accent-color);
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  border-radius: 5px;
+  text-decoration: none;
 }

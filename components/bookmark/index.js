@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import 'remixicon/fonts/remixicon.css';
 import styles from './bookmark.module.css';
 import DeleteButton from './delete';

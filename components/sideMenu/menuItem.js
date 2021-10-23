@@ -9,7 +9,10 @@ function MenuItem({ changeCategory, category, isActive }) {
     changeCategory(category.title);
   };
   return (
-    <li className={`${className}`} onClick={handleClick}>
+    <li
+      className={`${styles['menu-item']} ${styles[className]} `}
+      onClick={handleClick}
+    >
       {category.title}
     </li>
   );

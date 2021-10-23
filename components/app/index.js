@@ -1,27 +1,39 @@
 import { useState } from 'react';
 import BookmarkList from '../bookmarkList';
-import Header from '../header';
 import SideMenu from '../sideMenu';
 import { API_URL } from '../../config';
 import styles from './app.module.css';
 
-function App({ categories }) {
-  const [category, setCategory] = useState(categories[0].title);
+function App({ allCategories }) {
+  const [categories, setCategories] = useState(allCategories);
+  const [activeCategory, setActiveCategory] = useState(allCategories[0].title);
   const [bookmarksToDisplay, setBookmarksToDisplay] = useState(
-    categories[0].bookmarks
+    allCategories[0].bookmarks
   );
-  const [active, setActive] = useState(categories[0].title);
 
   const changeCategory = (category) => {
-    setActive(category);
-    setCategory(category);
+    setActiveCategory(category);
 
     const currCategory = categories.filter((item) => item.title === category);
+
     setBookmarksToDisplay(currCategory[0].bookmarks);
   };
 
   const addCategory = async (title) => {
-    //call api endpoint with title as body
+    const response = await fetch(API_URL + '/bookmarkCategory', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: title,
+      }),
+    });
+    const categoryToAdd = await response.json();
+
+    //Update UI to reflect changes
+    setCategories((categories) => [...categories, categoryToAdd]);
   };
 
   const editCategory = async (id, title) => {};
@@ -69,11 +81,10 @@ function App({ categories }) {
 
   return (
     <>
-      <Header />
       <div className={styles.container}>
         <SideMenu
           categories={categories}
-          active={active}
+          activeCategory={activeCategory}
           changeCategory={changeCategory}
           addCategory={addCategory}
           deleteCategory={deleteCategory}

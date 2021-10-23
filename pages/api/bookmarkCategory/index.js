@@ -1,44 +1,41 @@
-import prisma from '../../../lib/prisma'
+import prisma from '../../../lib/prisma';
 
 export default async function handler(req, res) {
-
   // GET /api/bookmarkCategory
-  if(req.method === 'GET'){
+  if (req.method === 'GET') {
     const results = await prisma.bookmarkCategory.findMany({
       include: {
-        bookmarks: true
-      }
+        bookmarks: true,
+      },
     });
     res.json(results);
   }
   // POST /api/bookmarkCategory
   //Required: Title
-  else if(req.method === 'POST'){
-    const {title} = req.body;
+  else if (req.method === 'POST') {
+    const { title } = req.body;
     const result = await prisma.bookmarkCategory.create({
-      data:{
+      data: {
         title: title,
-        bookmarks:{
+        bookmarks: {
           create: [
             {
               link: '',
               name: '',
               icon: '',
-              color: ''
-
-            }
-          ]
-        }
-      }
+              color: '',
+            },
+          ],
+        },
+      },
     });
 
     res.json(result);
   }
   //Throw error
-  else { 
+  else {
     throw new Error(
       `The HTTP ${req.method} method is not supported at this route.`
-    )
+    );
   }
-
 }

@@ -4,6 +4,8 @@
   --text-color: white;
   --accent-color: #b1ede8;
   --bookmark-color: cyan;
+  --menu-color: #2e3441;
+  --black: #151515;
   --roboto: 'Roboto', sans-serif;
 }
 html {
@@ -21,8 +23,4 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-}
-
-.active {
-  color: pink;
 }

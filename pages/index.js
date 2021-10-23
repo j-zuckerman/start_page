@@ -1,17 +1,17 @@
 import App from '../components/app';
 import { API_URL } from '../config';
 
-function HomePage({ categories }) {
-  return <App categories={categories} />;
+function HomePage({ allCategories }) {
+  return <App allCategories={allCategories} />;
 }
 
 export async function getStaticProps() {
   const res = await fetch(API_URL + '/bookmarkCategory');
-  const categories = await res.json();
-
+  const allCategories = await res.json();
+  console.log(allCategories);
   return {
     props: {
-      categories,
+      allCategories,
     },
   };
 }
