@@ -32,6 +32,7 @@ function SideMenu({
             <MenuItem
               isActive={isActive}
               changeCategory={changeCategory}
+              deleteCategory={deleteCategory}
               category={category}
               key={category.id}
             />

@@ -38,7 +38,16 @@ function App({ allCategories }) {
 
   const editCategory = async (id, title) => {};
 
-  const deleteCategory = async (id) => {};
+  const deleteCategory = async (id) => {
+    const response = await fetch(API_URL + `/bookmarkCategory/${id}`, {
+      method: 'DELETE',
+    });
+
+    const categoryToDelete = await response.json();
+    setCategories(
+      categories.filter((item) => item.title !== categoryToDelete[1].title)
+    );
+  };
 
   const addBookmark = async (name, link, icon, color) => {
     const response = await fetch(API_URL + '/bookmark', {

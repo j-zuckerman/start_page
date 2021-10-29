@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   // DELETE /api/bookmarkCategory/:id
   // Delete bookmark category as well as all bookmarks that is a part of said category
   if (req.method === 'DELETE') {
-    const deleteBookmarks = prisma.bookmarks.deleteMany({
+    const deleteBookmarks = prisma.bookmark.deleteMany({
       where: {
         categoryId: Number(id),
       },
