@@ -45,21 +45,30 @@
   font-weight: bold;
 }
 
-.menu-item-options {
-  margin-left: 1rem;
-  font-size: 1rem;
-  display: none;
-  margin-left: auto;
-}
-
 .menu-item:hover {
   background: var(--bg-color);
   color: var(--accent-color);
 }
 
+.menu-item-options {
+  font-size: 1rem;
+  display: none;
+  margin-left: auto;
+  padding-right: 1rem;
+}
+
 .menu-item:hover > .menu-item-options {
   display: inline-block;
   visibility: visible;
+}
+
+.category-title {
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  padding: none;
+  color: inherit;
+  background: inherit;
 }
 
 .active {

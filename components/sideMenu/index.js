@@ -33,6 +33,7 @@ function SideMenu({
               isActive={isActive}
               changeCategory={changeCategory}
               deleteCategory={deleteCategory}
+              editCategory={editCategory}
               category={category}
               key={category.id}
             />

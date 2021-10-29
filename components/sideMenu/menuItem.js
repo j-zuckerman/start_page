@@ -1,6 +1,15 @@
+import { useState } from 'react';
 import styles from './sideMenu.module.css';
 
-function MenuItem({ changeCategory, category, isActive, deleteCategory }) {
+function MenuItem({
+  changeCategory,
+  category,
+  isActive,
+  deleteCategory,
+  editCategory,
+}) {
+  const [title, setTitle] = useState(category.title);
+
   let className = '';
 
   if (isActive) className = 'active';
@@ -8,14 +17,29 @@ function MenuItem({ changeCategory, category, isActive, deleteCategory }) {
   const handleClick = () => {
     changeCategory(category.title);
   };
+
+  const editTitle = (e) => {
+    if (e.code === 'Enter') {
+      editCategory(title, category.id);
+    }
+  };
+
   return (
-    <li className={`${styles['menu-item']} ${styles[className]} `}>
-      <span contentEditable={true} onClick={handleClick}>
-        {category.title}
-      </span>
+    <li
+      className={`${styles['menu-item']} ${styles[className]} `}
+      onClick={handleClick}
+    >
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        onKeyPress={editTitle}
+        className={`${styles['category-title']}`}
+      />
 
       <span className={`${styles['menu-item-options']}`}>
-        <i className={`${styles.edit} ri-edit-box-line`}></i>
         <i
           className={`${styles.delete} ri-delete-bin-7-line`}
           onClick={() => deleteCategory(category.id)}

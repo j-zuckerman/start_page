@@ -36,7 +36,25 @@ function App({ allCategories }) {
     setCategories((categories) => [...categories, categoryToAdd]);
   };
 
-  const editCategory = async (id, title) => {};
+  const editCategory = async (title, id) => {
+    const response = await fetch(API_URL + `/bookmarkCategory/${id}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: title,
+      }),
+    });
+
+    const result = await response.json();
+
+    let tempCategories = [...categories];
+    let index = tempCategories.findIndex((el) => el.id === id);
+    tempCategories[index].title = result.title;
+    setCategories(tempCategories);
+  };
 
   const deleteCategory = async (id) => {
     const response = await fetch(API_URL + `/bookmarkCategory/${id}`, {
