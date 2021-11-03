@@ -20,9 +20,11 @@ function BookmarkList({
     ));
   }
   return (
-    <section className={styles.container}>
-      {bookmarksToRender}
-      <AddBookmark addBookmark={addBookmark} />
+    <section>
+      <div className={styles.container}>
+        {bookmarksToRender}
+        <AddBookmark addBookmark={addBookmark} />
+      </div>
     </section>
   );
 }

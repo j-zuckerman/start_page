@@ -79,17 +79,25 @@ function App({ allCategories }) {
         link: link,
         icon: icon,
         color: color,
-        categoryName: active,
+        categoryName: activeCategory,
       }),
     });
     const bookmarkToAdd = await response.json();
     console.log(bookmarkToAdd);
+
+    // let tempCategories = [...categories];
+    // let index = tempCategories.findIndex((el) => el.title === activeCategory);
+    // tempCategories[index].bookmarks.push(bookmarkToAdd);
+    // console.log(tempCategories);
+    // setCategories(tempCategories);
 
     //Update UI to reflect changes
     setBookmarksToDisplay((bookmarksToDisplay) => [
       ...bookmarksToDisplay,
       bookmarkToAdd,
     ]);
+
+    console.log(bookmarksToDisplay);
   };
 
   const deleteBookmark = async (id) => {
